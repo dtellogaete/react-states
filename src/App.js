@@ -1,23 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
+
+import Card from 'react-bootstrap/Card'
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+
+import Button from './Components/Boton';
 
 function App() {
+
+  /* Variables de estado */
+  const [name, setName] = useState('');
+  const [pass, setPass] = useState('');
+  const [alertStatus, setAlertStatus] =useState(0);
+
+  
+
+  const dataSubmit = (e) =>{
+    e.preventDefault();
+    if(name === 'ADL' && pass === '252525'){      
+      setAlertStatus(1)     
+    } else{      
+      setAlertStatus(2)  
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"> 
+      <div className="login"> 
+        <Card style={{ padding: '15px',
+                          margin: '5px',              
+                          width: '60%',
+                          height: '100%',
+                          }}>
+          <h2 class="text-center">Desafío Estado de los Componentes y Eventos</h2>           
+          <Form onSubmit={dataSubmit}>
+            {alertStatus === 1  &&
+            <Alert variant='success'>
+            Sesión iniciada correctamente
+            </Alert>} 
+            {alertStatus === 2  &&
+            <Alert variant='danger'>
+            Contraseña Incorrecta
+            </Alert>}          
+            <Form.Group className="mb-3" >
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => setName(e.target.value)}              
+                  placeholder="Nombre"
+                  defaultValue={name}
+                  id="name"
+                  />              
+            </Form.Group>  
+            <Form.Group className="mb-3">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  type="password"
+                  onChange={(e) => setPass(e.target.value)}
+                  placeholder="Contraseña"
+                  defaultValue={pass}
+                  id="pass"
+                  />                
+            </Form.Group>
+            {name != '' && pass != '' && <Button text="Iniciar Sesión"/>}    
+          </Form>
+
+        </Card>
+      </div>      
     </div>
   );
 }
