@@ -1,4 +1,4 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El proyecto puede ser visualizado en [https://dtellogaete.github.io/react-states/](https://dtellogaete.github.io/react-states/).
 

@@ -1,9 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 
-import Card from 'react-bootstrap/Card'
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
+import {Card, Form, Alert} from 'react-bootstrap'
 
 import Button from './Components/Boton';
 
@@ -12,9 +10,7 @@ function App() {
   /* Variables de estado */
   const [name, setName] = useState('');
   const [pass, setPass] = useState('');
-  const [alertStatus, setAlertStatus] =useState(0);
-
-  
+  const [alertStatus, setAlertStatus] =useState(0); 
 
   const dataSubmit = (e) =>{
     e.preventDefault();
@@ -64,7 +60,6 @@ function App() {
             </Form.Group>
             {name != '' && pass != '' && <Button text="Iniciar Sesión"/>}    
           </Form>
-
         </Card>
       </div>      
     </div>
